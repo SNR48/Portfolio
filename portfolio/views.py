@@ -143,5 +143,12 @@ def index(request):
             {"name": "Telugu", "level": "Native / Bilingual"},
             {"name": "English", "level": "Fluent"},
         ],
+        "hobbies":[
+            {
+                "games":"Playing Cricket",
+                "Entertainment":"Watching Movies and Animes",
+                "reading":"I interested in reading manhwas and Mangas"
+            }
+        ]
     }
     return render(request, "portfolio/index.html", context)
