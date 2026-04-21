@@ -1,0 +1,221 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ name }} | {{ title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="{% static 'css/portfolio.css' %}"/>
+</head>
+<body>
+<div class="page-shell">
+  <nav>
+    <a class="nav-logo" href="#">SN<span style="color:var(--muted)">.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-copy">
+      <p class="hero-prompt"><span>{{ title }}</span></p>
+      <h1 class="hero-name">
+        {{ name.split.0 }}<br>
+        <span class="highlight">{{ name.split.1 }}</span>
+      </h1>
+      <p class="hero-title">{{ title }}<span class="cursor"></span></p>
+      <p class="hero-tagline">{{ tagline }}</p>
+      <div class="hero-cta">
+        <a href="#experience" class="btn btn-primary">View Work</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+      <div class="hero-scroll">
+        <span class="scroll-line"></span>
+        Scroll to explore
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="profile-stage">
+        <div class="hero-glow"></div>
+        <div class="hero-ring"></div>
+        <div class="floating-chip chip-a">Neural Systems</div>
+        <div class="floating-chip chip-b">LLM + RAG</div>
+        <div class="floating-chip chip-c">FastAPI + ML</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <p class="section-label reveal">01 - About</p>
+    <div class="about-grid">
+      <div class="about-card panel glass-card reveal">
+        <div class="about-text">
+          <p>{{ summary }}</p>
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="icon">@</div>
+              <a href="mailto:{{ email }}">{{ email }}</a>
+            </div>
+            <div class="contact-item">
+              <div class="icon">T</div>
+              <span>{{ phone }}</span>
+            </div>
+            <div class="contact-item">
+              <div class="icon">L</div>
+              <span>{{ location }}</span>
+            </div>
+            <div class="contact-item">
+              <div class="icon">in</div>
+              <a href="{{ linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-card panel glass-card reveal">
+        <div class="about-stats">
+          <div class="stat-box">
+            <span class="stat-number">4+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">2</span>
+            <span class="stat-label">Major Projects</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Technologies</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">78%</span>
+            <span class="stat-label">B.Tech Score</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <p class="section-label reveal">02 - Technical Skills</p>
+    <div class="skills-grid">
+      {% for skill in skills %}
+      <div class="skill-card panel glass-card reveal">
+        <div class="skill-icon">{{ skill.icon }}</div>
+        <div class="skill-category">{{ skill.category }}</div>
+        <div class="skill-tags">
+          {% for item in skill.items %}
+          <span class="tag skill-tag-3d">
+            <span class="tag-logo">
+              <img src="{{ item.logo }}" alt="{{ item.name }} logo" class="tag-logo-image" loading="lazy" />
+            </span>
+            <span class="tag-name">{{ item.name }}</span>
+          </span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section id="experience">
+    <p class="section-label reveal">03 - Experience</p>
+    <div class="exp-container">
+      {% for exp in experiences %}
+      <div class="exp-card panel glass-card reveal">
+        <div class="exp-company">{{ exp.company }}</div>
+        <div class="exp-header">
+          <div class="exp-role">{{ exp.role }}</div>
+          <div class="exp-duration">{{ exp.duration }}</div>
+        </div>
+        <div class="exp-project {{ exp.color }}">// {{ exp.project }}</div>
+        <ul class="exp-points">
+          {% for point in exp.points %}
+          <li>{{ point }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section id="education">
+    <p class="section-label reveal">04 - Education &amp; Certification</p>
+    <div class="edu-grid">
+      <div class="edu-card panel glass-card reveal">
+        <p class="eyebrow">Education</p>
+        <div class="edu-degree">{{ education.degree }}</div>
+        <div class="edu-college">{{ education.college }}</div>
+        <div class="edu-badge">Score: {{ education.score }}</div>
+      </div>
+
+      <div class="cert-card panel glass-card reveal">
+        <p class="eyebrow">Certification</p>
+        <div class="cert-title">{{ certification.title }}</div>
+        <div class="cert-org">{{ certification.org }}</div>
+        <div class="edu-badge">Duration: {{ certification.duration }}</div>
+      </div>
+    </div>
+
+    <div class="lang-row">
+      {% for lang in languages %}
+      <div class="lang-chip panel glass-card reveal">
+        <strong>{{ lang.name }}</strong>
+        <span>{{ lang.level }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-panel panel glass-card reveal">
+      <p class="section-label" style="justify-content:center;">05 - Contact</p>
+      <h2 class="contact-cta-title">Let's Build <span>Something</span><br>Intelligent</h2>
+      <p class="contact-cta-sub">Open to new opportunities in AI/ML Engineering and GenAI roles.</p>
+      <div class="contact-links">
+        <a href="mailto:{{ email }}" class="btn btn-primary">Send Email</a>
+        <a href="{{ linkedin }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>{{ name }}</span> · Built with Django · {{ title }}
+  </footer>
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), index * 70);
+      }
+    });
+  }, { threshold: 0.14 });
+  reveals.forEach((element) => observer.observe(element));
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach((section) => {
+      if (window.scrollY >= section.offsetTop - 140) {
+        current = section.id;
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.style.color = link.getAttribute('href') === '#' + current ? 'var(--cyan)' : '';
+    });
+  });
+</script>
+</body>
+</html>
