@@ -10,6 +10,7 @@ def index(request):
         "phone": "07981578718",
         "location": "Hyderabad, India",
         "linkedin": "https://linkedin.com/in/sivanagaraju-naradala-0637a0217",
+        "github": "https://github.com/SNR48",
         "summary": (
             "Data Scientist and GenAI Engineer with 4+ years of experience delivering scalable "
             "machine learning, predictive analytics, and LLM-powered solutions. Focused on "
@@ -126,6 +127,34 @@ def index(request):
                     "Engineered domain-specific features such as fuel efficiency, idle ratio, engine load, and trip-level metrics.",
                     "Built regression and classification models for fuel consumption analysis and maintenance prediction.",
                     "Hosted production services on Google Cloud Compute Engine with reliable request handling.",
+                ],
+            },
+            {
+                "company": "DDU-GKY",
+                "duration": "6 Months",
+                "role": "ML Engineer Intern",
+                "project": "Churn Prediction for Telecom",
+                "color": "green",
+                "points": [
+                    "Built a machine learning model to predict customer churn using behavioral and transactional data",
+                    "Performed Exploratory Data Analysis (EDA) to identify key patterns, correlations, and churn trends",
+                    "Applied data preprocessing and feature engineering to improve model performance",
+                    "Trained and evaluated models like Logistic Regression and Random Forest using ROC-AUC and F1-score",
+                    "Handled class imbalance using SMOTE and identified key churn drivers using feature importance"
+                ],
+            },
+            {
+                "company": "Self-Driven Learning",
+                "duration": "",
+                "role": "GenAI Engineer",
+                "project": "Rag-Based Pdf Q&A System",
+                "color": "green",
+                "points": [
+                    "Built an end-to-end RAG pipeline enabling grounded Q&A over user-uploaded PDFs with zero hallucination via source-constrained prompting",
+                    "Engineered sliding-window PDF chunker using PyMuPDF and embedded chunks with sentence-transformers (all-MiniLM-L6-v2) into a ChromaDB cosine vector store",
+                    "Integrated Ollama (llama3.2:3b) as a local LLM backend — no API keys, runs fully offline on 8 GB RAM consumer hardware",
+                    "Implemented top-K retrieval with per-chunk provenance (page, score) for fully auditable answers; exposed tunable chunk size, overlap, and K via Streamlit UI",
+                    "Delivered 100% local, cost-free AI solution with one-command startup, live model health checks, and real-time indexed chunk counter"
                 ],
             },
         ],
